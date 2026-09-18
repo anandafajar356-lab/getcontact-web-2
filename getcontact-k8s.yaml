@@ -39,14 +39,14 @@ spec:
               cpu: "250m"
           readinessProbe:
             httpGet:
-              path: /
+              path: /fpm-ping
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /
+              path: /fpm-ping
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 15
