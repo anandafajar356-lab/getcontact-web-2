@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Local Development
+ * Database Configuration
  */
-define("DATABASE_HOST", "localhost");
-define("DATABASE_NAME", "getcontact_web");
-define("DATABASE_USER", "root");
-define("DATABASE_PASS", "root");
+define("DATABASE_HOST", getenv("DB_HOST") ?: "getcontact-mysql");
+define("DATABASE_NAME", getenv("DB_NAME") ?: "getcontact_web");
+define("DATABASE_USER", getenv("DB_USER") ?: "root");
+define("DATABASE_PASS", getenv("DB_PASS") ?: "root");
 
 /**
  * Production
