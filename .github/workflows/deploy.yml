@@ -33,6 +33,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/getcontact-web:${{ env.SHA_SHORT }}
+          ${{ secrets.DOCKER_USERNAME }}/getcontact-web:latest
 
       - name: Update Kubernetes Manifest
         run: |
