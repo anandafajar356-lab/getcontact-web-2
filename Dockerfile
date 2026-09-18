@@ -1,6 +1,18 @@
-FROM trafex/php-nginx:latest
+FROM php:8.2-apache
 
-# Salin source code langsung ke document root Nginx
-COPY --chown=nobody:nobody . /var/www/html/
+# Install dependencies dan extension pdo_mysql & mysqli
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    pkg-config \
+    libssl-dev \
+    && docker-php-ext-install pdo pdo_mysql mysqli curl \
+    && a2enmod rewrite \
+    && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 8080
+# Copy seluruh source code ke DocumentRoot Apache
+COPY . /var/www/html/
+
+# Pastikan permission file sesuai
+RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 80

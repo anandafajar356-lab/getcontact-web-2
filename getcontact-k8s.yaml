@@ -29,25 +29,25 @@ spec:
           image: saintshiro16/getcontact-web:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources:
             requests:
-              memory: "64Mi"
+              memory: "128Mi"
               cpu: "50m"
             limits:
-              memory: "256Mi"
-              cpu: "250m"
+              memory: "512Mi"
+              cpu: "500m"
           readinessProbe:
             httpGet:
               path: /public/js/custom.js
-              port: 8080
+              port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           livenessProbe:
             httpGet:
               path: /public/js/custom.js
-              port: 8080
+              port: 80
             initialDelaySeconds: 10
             periodSeconds: 15
             failureThreshold: 3
@@ -66,7 +66,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 80
 
 ---
 
