@@ -39,14 +39,14 @@ spec:
               cpu: "250m"
           readinessProbe:
             httpGet:
-              path: /fpm-ping
+              path: /public/js/custom.js
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /fpm-ping
+              path: /public/js/custom.js
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 15
