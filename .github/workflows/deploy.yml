@@ -33,12 +33,11 @@ jobs:
           context: .
           push: true
           tags: |
-          ${{ secrets.DOCKER_USERNAME }}/getcontact-web:${{ env.SHA_SHORT }}
-          ${{ secrets.DOCKER_USERNAME }}/getcontact-web:latest
+            ${{ secrets.DOCKER_USERNAME }}/getcontact-web:${{ env.SHA_SHORT }}
+            ${{ secrets.DOCKER_USERNAME }}/getcontact-web:latest
 
       - name: Update Kubernetes Manifest
         run: |
-          # Perbarui image tag pada file manifest k8s (sesuaikan nama file jika memakai getcontact-k8s.yaml atau nginx-withrc.yaml)
           TARGET_FILE="getcontact-k8s.yaml"
           [ -f "nginx-withrc.yaml" ] && TARGET_FILE="nginx-withrc.yaml"
           sed -i -E "s|image: .*/getcontact-web:.*|image: ${{ secrets.DOCKER_USERNAME }}/getcontact-web:${{ env.SHA_SHORT }}|g" $TARGET_FILE
