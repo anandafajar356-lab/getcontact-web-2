@@ -1,0 +1,12 @@
+- name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          # Ganti target image ke repository getcontact
+          tags: ${{ secrets.DOCKER_USERNAME }}/getcontact-web:${{ env.SHA_SHORT }}
+
+      - name: Update Kubernetes Manifest
+        run: |
+          # Targetkan image 'getcontact-web'
+          sed -i -E "s|image: .*/getcontact-web:.*|image: ${{ secrets.DOCKER_USERNAME }}/getcontact-web:${{ env.SHA_SHORT }}|g" getcontact-k8s.yaml
