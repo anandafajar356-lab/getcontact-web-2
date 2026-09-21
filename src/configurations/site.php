@@ -15,7 +15,7 @@ define("USE_DATABASE", true);
  * 
  * If no subdirectory is used, set this value to an empty string.
  */
-define("URL_PREFIX", "/getcontact-web");
+define("URL_PREFIX", "");
 // define("URL_PREFIX", "");
 
 /**
