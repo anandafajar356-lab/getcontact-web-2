@@ -1,5 +1,8 @@
+SetEnvIf X-Forwarded-Proto https HTTPS=on
 RewriteEngine On
 RewriteBase /
+
+RewriteRule ^([.]git|[.]github|sql|Dockerfile|getcontact-k8s[.]yaml|readme[.]md|LICENSE)(/|$) - [R=404,L]
 
 RewriteRule ^src/.* index.php [L]
 

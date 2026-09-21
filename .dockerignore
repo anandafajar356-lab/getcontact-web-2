@@ -1,0 +1,6 @@
+.git
+.github
+Dockerfile
+.dockerignore
+getcontact-k8s.yaml
+readme.md
